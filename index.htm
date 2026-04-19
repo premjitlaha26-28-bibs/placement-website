@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placement Preparation Assistant</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body {margin:0;font-family:Arial;background:#f5f7ff;}
+
+header {background:#667eea;color:white;padding:15px;position:fixed;width:100%;}
+nav {display:flex;justify-content:space-between;align-items:center;}
+.nav-links {display:flex;gap:20px;}
+.nav-links a {color:white;text-decoration:none;}
+
+.hero {
+padding-top:100px;
+text-align:center;
+background:#667eea;
+color:white;
+padding-bottom:50px;
+}
+.hero h1 {
+font-size:40px;
+animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+from { text-shadow: 0 0 10px white; }
+to { text-shadow: 0 0 30px yellow; }
+}
+
+.section {padding:60px;text-align:center;}
+
+.cards {display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+
+.card {
+background:white;
+padding:20px;
+border-radius:10px;
+width:300px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.4s;
+}
+.card:hover {
+transform:scale(1.05);
+}
+
+input, textarea {
+padding:10px;
+width:250px;
+margin:5px;
+}
+
+button {
+padding:10px 20px;
+background:#667eea;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+footer {
+background:#333;
+color:white;
+text-align:center;
+padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h2>PPA</h2>
+<div class="nav-links">
+<a href="#skills">Skills</a>
+<a href="#roles">Roles</a>
+<a href="#interview">Interview</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Placement Preparation Assistant</h1>
+<p>Prepare smartly for MBA placements</p>
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" width="300">
+</section>
+
+<section id="skills" class="section">
+<h2>Skill Development</h2>
+<div class="cards">
+<div class="card"><h3>Communication</h3></div>
+<div class="card"><h3>Quantitative</h3></div>
+<div class="card"><h3>Case Study</h3></div>
+</div>
+</section>
+
+<section id="roles" class="section">
+<h2>Role-Based Preparation</h2>
+<div class="cards">
+<div class="card"><h3>Marketing</h3></div>
+<div class="card"><h3>Finance</h3></div>
+<div class="card"><h3>HR</h3></div>
+</div>
+</section>
+
+<section id="interview" class="section">
+<h2>Interview Preparation</h2>
+<div class="cards">
+<div class="card"><h3>Mock Interview</h3></div>
+<div class="card"><h3>HR Questions</h3></div>
+<div class="card"><h3>Resume Tips</h3></div>
+</div>
+</section>
+
+<!-- LOGIN -->
+<section class="section">
+<h2>Login</h2>
+<input id="user" placeholder="Username"><br>
+<input id="pass" type="password" placeholder="Password"><br>
+<button onclick="login()">Login</button>
+<p id="loginMsg"></p>
+</section>
+
+<!-- CHATBOT -->
+<section class="section">
+<h2>AI Chatbot</h2>
+<input id="chatInput" placeholder="Ask something">
+<button onclick="chat()">Send</button>
+<p id="chatOutput"></p>
+</section>
+
+<!-- RESUME -->
+<section class="section">
+<h2>Resume Checker</h2>
+<textarea id="resume" placeholder="Paste resume"></textarea><br>
+<button onclick="checkResume()">Check</button>
+<p id="resumeResult"></p>
+</section>
+
+<footer>
+<p>© 2026 Placement Preparation Assistant</p>
+</footer>
+
+<script>
+function login(){
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
+
+if(u=="admin" && p=="1234"){
+document.getElementById("loginMsg").innerText="Login Success ✅";
+}else{
+document.getElementById("loginMsg").innerText="Wrong ❌";
+}
+}
+
+function chat(){
+let input=document.getElementById("chatInput").value.toLowerCase();
+let output="";
+
+if(input.includes("interview")){
+output="Practice daily and prepare HR questions.";
+}
+else if(input.includes("skill")){
+output="Focus on communication and aptitude.";
+}
+else{
+output="Ask about placement!";
+}
+
+document.getElementById("chatOutput").innerText=output;
+}
+
+function checkResume(){
+let text=document.getElementById("resume").value;
+
+if(text.length<50){
+document.getElementById("resumeResult").innerText="Too short ❌";
+}
+else if(!text.includes("skill")){
+document.getElementById("resumeResult").innerText="Add skills ⚠️";
+}
+else{
+document.getElementById("resumeResult").innerText="Good resume ✅";
+}
+}
+
+// smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener("click",function(e){
+e.preventDefault();
+document.querySelector(this.getAttribute("href")).scrollIntoView({
+behavior:"smooth"
+});
+});
+});
+</script>
+
+</body>
+</html>
